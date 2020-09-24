@@ -1,0 +1,788 @@
+/*! /src/style.css */
+/* Fonts import
+ * https://google-webfonts-helper.herokuapp.com/fonts/roboto-condensed
+ * https://github.com/bramstein/fontfaceobserver
+ *
+ * Change font :
+ *  1. Go to google webfont and choose a font
+ *  2. Go to heroku and re-select the same font : https://google-webfonts-helper.herokuapp.com/fonts/
+ *  3. Go to the bottom of the page and download the font files
+ *  4. Copy them in the /assets/fonts/ folder
+ *  5. Copy css provided below
+ *  6. Adapt urls (add /assets/, etc.) to match the place where you put the font files
+ *  7. Change font names in style.css (this file) ~line 70 according to your needs
+ *  8. Don't forget to adapt /assets/js/fonts.js, for improved loading
+ *  9. In the "font" section, update links towards google web fonts
+*/
+
+/* https://google-webfonts-helper.herokuapp.com/fonts/roboto-condensed */
+/* roboto-condensed-regular - latin */
+@font-face {
+  /* font-display: swap; */
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/roboto-condensed/roboto-condensed-v18-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'),
+      url('./assets/fonts/roboto-condensed/roboto-condensed-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('./assets/fonts/roboto-condensed/roboto-condensed-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+      url('./assets/fonts/roboto-condensed/roboto-condensed-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
+      url('./assets/fonts/roboto-condensed/roboto-condensed-v18-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+      url('./assets/fonts/roboto-condensed/roboto-condensed-v18-latin-regular.svg#RobotoCondensed') format('svg'); /* Legacy iOS */
+}
+
+/* https://google-webfonts-helper.herokuapp.com/fonts/playfair-display?subsets=latin */
+/* playfair-display-600 - latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./assets/fonts/playfair-display-v21-latin/playfair-display-v21-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('./assets/fonts/playfair-display-v21-latin/playfair-display-v21-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./assets/fonts/playfair-display-v21-latin/playfair-display-v21-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./assets/fonts/playfair-display-v21-latin/playfair-display-v21-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('./assets/fonts/playfair-display-v21-latin/playfair-display-v21-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./assets/fonts/playfair-display-v21-latin/playfair-display-v21-latin-600.svg#PlayfairDisplay') format('svg'); /* Legacy iOS */
+}
+
+
+/* Basic css */
+* {
+  box-sizing: border-box;
+  transition: all .5s;
+}
+
+a,
+a:active
+/*,a:visited*/
+{
+  color: #cda960;
+  cursor: pointer;
+}
+a:hover {
+  color: #f2d7a0;
+  text-decoration: none;
+}
+
+body {
+  /* https://www.transparenttextures.com/ */
+  /* background: url('assets/images/bg.png') repeat; */
+  background-color: #fbfbfb;
+  color: #303030;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  justify-content: center;
+  line-height: 1.4em;
+  min-height: 100vh;
+  padding: 0.5em;
+  text-align: center;
+}
+
+button {
+  background-color: rgba(0,0,0,0);
+  cursor: pointer;
+  padding: 0.2em 0.4em;
+}
+
+/*
+body.font1-loaded h1,
+body.font1-loaded h2,
+body.font1-loaded h3,
+body.font1-loaded h4,
+body.font1-loaded h5,
+body.font1-loaded h6,
+*/
+/* You can override font choices through local classes */
+.font1
+{
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+body.font2-loaded, body.font2-loaded .font2 {
+  font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+}
+
+footer {
+  padding-top: 0.5em;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 3.6em;
+}
+h2 {
+  font-size: 2.8em;
+}
+h3 {
+  font-size: 2em;
+}
+
+h4, h5, h6 {
+  font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  line-height: 1em;
+}
+h4 {
+  font-size: 1.4em;
+}
+h5 {
+  font-size: 1.3em;
+}
+h6 {
+  font-size: 1.2em;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input {
+  margin-bottom: 0.2em;
+  padding: 0.2em 0.4em;
+}
+input[type=submit]{
+  cursor: pointer;
+}
+
+p {
+  /* word-break: break-all; */
+  word-break: break-word;
+}
+
+section {
+  align-items: center;
+  border-bottom: 1px solid #303030;
+  display: flex;
+  justify-content: center;
+  min-height: 97vh;
+  width: 100%;
+  padding-bottom: 70px;
+  position: relative;
+}
+
+ul {
+  text-align: left;
+}
+
+
+.bg-transparent {
+  background-color: rgba(0,0,0,0);
+}
+
+.button-down {
+  /* background: #DCDCDC; */
+  border: 1px solid #d9be87;
+  border-radius: 100%;
+  bottom: 15px;
+  color: #d9be87;
+  cursor: pointer;
+  height: 40px;
+  left: 50%;
+  line-height: 35px;
+  outline: none;
+  position: absolute;
+  transform: translateX(-50%);
+  vertical-align: middle;
+  width: 40px;
+}
+.button-down:hover {
+  background: #0a2807;
+}
+.button-down:active, .button-down:focus {
+  background: #0a2807;
+}
+
+.centre-a-l-ancienne {
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden-mobile {
+  display: none;
+}
+
+.posr {
+  position: relative;
+}
+
+.small-font {
+  font-size: .8em;
+}
+
+.text-justify {
+  text-align: justify;
+}
+.text-left {
+  text-align: left;
+}
+
+
+
+/*** Projet ***/
+.colonnes {
+  display: flex;
+  flex-direction: column;
+}
+
+.colonnes > div {
+  padding: .5em;
+}
+
+/** Couleurs **/
+.color {
+  display: table;
+}
+
+.pastille {
+  height: 100px;
+  display: table-cell;
+  min-width: 100px;
+  padding: 0.5em;
+  text-align: center;
+  vertical-align: middle;
+  width: 100px;
+}
+
+#couleurs ul {
+  display: table-cell;
+  list-style-type: none;
+  padding-left: .5em;
+  vertical-align: middle;
+}
+
+#couleurs .description {
+  margin-right: 1em;
+}
+
+/* Déclinaisons */
+.declinaisons {
+  border-collapse: collapse;
+}
+
+.declinaison td {
+  font-size: .8em;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.declinaison td:first-child ul {
+  padding-left: 0;
+  padding-right: .5em;
+}
+
+/* Correct vertical align */
+.declinaison td:first-child {
+  padding: 8px 0;
+}
+
+.pastille-small {
+  display: table-cell;
+  height: 70px;
+  max-width: 70px;
+  min-width: 70px;
+  padding: 0.4em;
+  vertical-align: middle;
+  width: 70px;
+}
+
+/* Prevent overflow */
+.menu {
+  overflow: hidden;
+}
+
+/* ~Responsive */
+@media screen and (min-width: 620px) {
+  
+}
+
+@media screen and (min-width: 960px) {
+    
+}
+
+@media screen and (min-width: 1280px) {
+  .colonnes {
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80vw;
+  }
+  .colonnes > div {
+    max-width: 50%;
+  }
+
+  .declinaisons tr {
+    height: 100px;
+  }
+
+  .mx-width-half {
+    max-width: 50%;
+  }
+  
+
+
+
+  /*** Projet ***/
+  #couleurs ul {
+    padding-left: 1em;
+  }
+
+  .declinaison td:first-child ul {
+    padding-left: 0;
+    padding-right: 1em;
+  }
+
+  .hidden-mobile {
+    display: block;
+  }
+
+  .pastille-small {
+    height: 70px;
+    max-width: 70px;
+    min-width: 70px;
+    padding: .5em;
+    width: 70px;
+  }
+
+  body {
+    padding: 1em;
+  }
+
+  footer {
+    padding-top: 1em;
+  }
+}
+
+/*
+Note :
+  Des classes sont générées automatiquement, relatives aux couleurs et à leurs déclinaisons,
+  Pour la couleur du texte, mais également des fonds
+  Exemple de classes générées : 
+
+  <style>
+    .bg-color1 {
+      background-color: #151132;
+    }
+    .border-color1 {
+        border: 2px solid #151132;
+    }
+    .color1 {
+        color: #151132;
+    }
+    .bg-color1-brighter {
+      background-color: #2e2a4b;
+    }
+    .color1-brighter {
+      color: #2e2a4b;
+    }
+    .bg-color1-darker {
+      background-color: #05040c;
+    }
+    .color1-darker {
+      color: #05040c;
+    }
+  </style>
+
+  et également pour chaque couleur..
+*/
+
+/**** End of automatisation CSS ***/
+
+
+
+/**** Manual CSS ****/
+
+/*** Regles ***/
+.fond {
+  align-items: center;
+  display: flex;
+  font-size: 2em;
+  font-weight: bold;
+  justify-content: space-evenly;
+  height: 200px;
+  width: 100%;
+}
+
+#regles-couleurs .couleur {
+  height: 50px ;
+  width: 50px ;
+}
+
+.fond-img-bright {
+  background-size: cover;
+  background-image: url('./assets/images/landscape-bright.jpg');
+}
+.fond-img-dark {
+  background-size: cover;
+  background-image: url('./assets/images/landscape-dark.jpg');
+}
+
+.usages .fond {
+  flex-direction: column;
+}
+
+
+/*** Web components ***/
+.menu-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btn-menu-mobile {
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  height: 50px;
+  /* Bars have a transparent gap underneath */
+  line-height: 40px;
+  vertical-align: middle;
+  width: 50px;
+}
+.menu-mobile .btn-menu-mobile:hover {
+  color: #255f24;
+  background-color: #f2d7a0; 
+}
+.menu-mobile .btn-menu-mobile:focus {
+  color: #255f24;
+  background-color: #f2d7a0;
+}
+.menu-mobile div {
+  align-self: center;
+  font-size: 1.5em;
+  padding-left: 50px;
+  text-transform: uppercase;
+  width: calc(100% - 50px);
+}
+
+.menu {
+  position: relative;
+}
+.menu ul {
+  display: flex;
+  justify-content: center;
+  list-style:none;
+  margin: 0px;
+  padding: 0px;
+}
+.menu a {
+  display: block;
+  line-height: 70px;
+  font-size: 1.4em;
+  padding: 0 1em;
+  text-align:center;
+  text-decoration: none;
+}
+.menu a:hover {
+  background-color: #041a04; /* Darker green */
+}
+.cursor-pointer {
+  color: white;
+  font-size: 2.5em;
+  position: absolute;
+  text-shadow: 2px 2px 2px black;
+}
+
+.menu-mobile-deplie {
+  height: 400px;
+  max-width: 300px;
+}
+.menu-mobile-deplie ul {
+  flex-direction : column;
+  height: 100%;
+}
+.menu-mobile-deplie .cursor-pointer {
+  left: 70%;
+  top: 70%;
+}
+
+.menu-desktop {
+  height: 70px;
+  max-width: 100%;
+  width: 100%;
+}
+.menu-desktop ul {
+  height: 70px;
+  flex-direction : row;
+}
+.menu-desktop a {
+  font-size: 1.6em;
+  padding: 0 .5em;
+}
+.menu-desktop .cursor-pointer {
+  left: 75%;
+  top: 72%;
+}
+
+.menu-footer {
+  font-size: 0.8em;
+  min-height: 200px;
+  position: relative;
+  width: 100%;
+}
+.menu-footer .first-row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #d9be87;
+}
+.menu-footer ul {
+  list-style: none;
+  margin-right: 1em;
+}
+.menu-footer a {
+  text-decoration: none;
+}
+.menu-footer h4 {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+.menu-footer .cursor-pointer {
+  left: 11%;
+  top: 61%;
+}
+.menu-footer .second-row {
+  padding: 0.5em;
+}
+
+@media screen and (min-width: 1280px) {
+  .menu-desktop {
+    overflow: initial;
+  }
+  .menu-footer .first-row {
+    flex-direction: row;
+  }
+  .menu-footer h4 {
+    margin-top: 1em;
+  }
+}
+
+
+.social {
+  font-size: 1.5em;
+  padding: .5em;
+}
+
+.boutons .line {
+  padding: 0.5em;
+}
+
+.boutons.hover .cursor-pointer {
+  right: 35px;
+  top: 32px;
+}
+
+.formulaires form {
+  padding: 1em 0.5em;
+}
+.formulaires label {
+  margin-right: 0.5em;
+}
+.formulaires td {
+  text-align: left;
+}
+.formulaires td:first-child {
+  text-align: right;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #9faba7;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #9faba7;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #9faba7;
+}
+
+
+
+#references .colonnes {
+  align-items: baseline;
+}
+
+.p051em {
+  padding: 0.5em 1em;
+}
+.bg-or1 {
+  background: -webkit-linear-gradient(left, #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+	background: linear-gradient(left,         #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+}
+.bg-or2 {
+  background: -webkit-linear-gradient(left, #dfbd69, #926f34);
+	background: linear-gradient(left,         #dfbd69, #926f34);
+}
+.bg-or3 {
+  background: -webkit-linear-gradient(left, #f9f295, #e0aa3e, #f9f295, #b88a44);
+	background: linear-gradient(left,         #f9f295, #e0aa3e, #f9f295, #b88a44);
+}
+
+.bg-image {
+  height: auto;
+  vertical-align: middle;
+  max-width: 500px;
+  width: 100%;
+}
+.bg-image h2 {
+  line-height: 300px;
+  text-shadow: 2px 2px 2px #000;
+}
+.bg-image p {
+  line-height: 300px;
+  text-shadow: 2px 2px 2px #fbfbfb;
+}
+
+.bg-dark {
+  background: url('./assets/images/champagne-sombre.jpg');
+}
+.bg-bright {
+  background: url('./assets/images/champagne-clair.jpg');
+}
+
+.illustration-bg-colore div {
+  height: 100px;
+}
+
+  .illustration-bg-colore h2, .illustration-bg-colore p {
+  text-shadow: none;
+  line-height: 100px;
+}
+
+.container .bb-thin {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom-width: 1px;
+}
+
+.btn-big {
+  font-size: 1.4em;
+  max-width: 400px;
+  min-width: 300px;
+  padding: 0.4em 0.8em;
+  width: 100%;
+}
+
+/* Overloa btn3 with darker color */
+.container .btn3 {
+  border: 2px solid #cda960;
+  color: #cda960;
+}
+.container .btn3:hover, .container .boutons.hover .btn3 {
+  background-color: #cda960;
+}
+
+.bg-or1-incline {
+  background: -webkit-linear-gradient(80deg, #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+  background: linear-gradient(80deg,         #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+  background-size: 150% 150%;
+}
+.bg-or2-incline {
+  background: -webkit-linear-gradient(80deg, #dfbd69, #926f34);
+	background: linear-gradient(80deg,         #dfbd69, #926f34);
+}
+.bg-or3-incline {
+  background: -webkit-linear-gradient(80deg, #f9f295, #e0aa3e, #f9f295, #b88a44);
+	background: linear-gradient(80deg,         #f9f295, #e0aa3e, #f9f295, #b88a44);
+}
+
+
+/* https://css-tricks.com/gradient-borders-in-css/ < last example */
+.border-gradient {
+  /* Twice border-width */
+  border: 8px solid;
+  border-image-slice: 1;
+  border-width: 4px;
+  /* Improve lisibility, as text-shadow insn't available for colored through bg text */
+  background-color: rgba(0,0,0,.5);
+}
+.text-gradient {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  font-weight: bold;
+  /* Overlap font color, because of transparency */
+  /* text-shadow: 2px 2px 2px red; */
+}
+
+.border-gradient-or1 {
+  border-image-source: -webkit-linear-gradient(80deg, #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+  border-image-source: linear-gradient(80deg,         #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+}
+.text-or1 {
+  background-image: -webkit-linear-gradient(80deg, #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+  background-image: linear-gradient(80deg,         #ae8625, #f7ef8a, #d2ac47, #edc967, #d2ac47);
+}
+
+.border-gradient-or2 {
+  border-image-source: -webkit-linear-gradient(80deg, #dfbd69, #926f34);
+  border-image-source: linear-gradient(80deg,         #dfbd69, #926f34);
+}
+.text-or2 {
+  background-image: -webkit-linear-gradient(80deg, #dfbd69, #926f34);
+  background-image: linear-gradient(80deg,         #dfbd69, #926f34);
+}
+
+.border-gradient-or3 {
+  border-image-source: -webkit-linear-gradient(80deg, #f9f295, #e0aa3e, #f9f295, #b88a44);
+  border-image-source: linear-gradient(80deg,         #f9f295, #e0aa3e, #f9f295, #b88a44);
+}
+.text-or3 {
+  background-image: -webkit-linear-gradient(80deg, #f9f295, #e0aa3e, #f9f295, #b88a44);
+  background-image: linear-gradient(80deg,         #f9f295, #e0aa3e, #f9f295, #b88a44);
+}
+
+.boutons-dore .bg-image {
+  background-color: black;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  padding-bottom: 3em;
+  padding-top: 3em;
+}
+.boutons-dore .col1 {
+  background: none;
+}
+.boutons-dore .col1 button:hover, .boutons-dore .col2 button:hover {
+  /* border-color: #fbfbfb; */
+  color: #fbfbfb;
+  text-shadow: 2px 2px 2px rgba(0,0,0,.3);
+  animation: gradient 1s ease 1;
+}
+.boutons-dore .border-gradient:hover {
+  background-color: rgba(255,255,255,.15);
+}
+
+/* Animation au survol */
+@keyframes gradient {
+	0% {
+    background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
